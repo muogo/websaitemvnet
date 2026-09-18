@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>MVnet - Network Access Provider</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Edu+TAS+Beginner:wght@400..700&family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link rel="stylesheet" href="lib/animate/animate.min.css"/>
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+
+        <style>
+            /* Efek Warna Menu Navbar & Footer Menjadi #FBB323 saat Hover/Active */
+            .nav .nav-link:hover,
+            .nav .nav-link.active {
+                color: #FBB323 !important;
+                transition: color 0.2s ease-in-out;
+            }
+
+            /* Dropdown / Mega Menu Styling */
+            .navbar-nav .dropdown {
+                position: relative;
+            }
+            .navbar-nav .dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: #ffffff;
+                border-radius: 12px;
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+                border: none;
+                padding: 20px;
+                min-width: 550px;
+                margin-top: 10px;
+                z-index: 1000;
+            }
+            .navbar-nav .dropdown:hover .dropdown-menu {
+                display: block;
+                animation: fadeInDown 0.3s ease;
+            }
+            @keyframes fadeInDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .dropdown-item-custom {
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                padding: 10px 15px;
+            }
+            .dropdown-item-custom:hover {
+                background-color: #f8f9fa;
+                color: #003366 !important;
+                transform: translateX(5px);
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Top Navbar Start -->
+        <div class="container-fluid py-3 border-bottom sticky-top shadow-sm" style="background-color: #003366 !important;">
+            <div class="container-fluid px-4 px-lg-5 d-flex align-items-center justify-content-between position-relative">
+                
+                <!-- Logo -->
+                <div class="d-flex align-items-center">
+                    <a href="index.html" class="navbar-brand d-flex align-items-center">
+                        <img src="img/logo mvnet.png" alt="MVnet Logo" style="height: 40px; width: auto; object-fit: contain;">
+                    </a>
+                </div>
+
+                <!-- Navigation Menu (Akan di-toggle oleh JS di Mobile) -->
+                <div id="customMobileMenu" class="d-none d-lg-flex align-items-center custom-mobile-menu">
+                    <!-- Tombol Close (Hanya muncul di Mobile saat menu terbuka) -->
+                    <button class="btn text-white d-lg-none position-absolute top-0 end-0 m-3" id="closeMenuBtn" style="font-size: 24px;">
+                        <i class="fa fa-times"></i>
+                    </button>
+
+                    <ul class="nav navbar-nav align-items-lg-center mb-0 flex-column flex-lg-row w-100 p-4 p-lg-0">
+                        <li class="nav-item"><a href="index.html" class="nav-link text-white fw-bold small px-3 px-lg-2">Home</a></li>
+                        <li class="nav-item"><a href="about.html" class="nav-link text-white fw-bold small px-3 px-lg-2">About Us</a></li>
+                        
+                        <!-- Services Dropdown (Hanya 1 Ikon Panah) -->
+                        <li class="nav-item dropdown">
+                            <a href="service.html" class="nav-link text-white fw-bold small px-3 px-lg-2" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Services <i class="fa fa-chevron-down ms-1" style="font-size: 10px;"></i>
+                            </a>
+                            <div class="dropdown-menu p-4 shadow-lg" aria-labelledby="servicesDropdown">
+                                <div class="row g-4">
+                                    <!-- Kolom 1: Commercial -->
+                                    <div class="col-md-6 border-end">
+                                        <h6 class="text-uppercase fw-bold mb-3" style="color: #003366; font-size: 13px; letter-spacing: 0.5px;">
+                                            <i class="fas fa-network-wired me-2" style="color: #FBB323;"></i> Commercial
+                                        </h6>
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="service.html#ServiceTab-1" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">IP Transit & MVIX</a></li>
+                                            <li><a href="service.html#ServiceTab-1" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">Dedicated & Broadband</a></li>
+                                            <li><a href="service.html#ServiceTab-1" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">Direct Connect</a></li>
+                                        </ul>
+                                    </div>
+                                    <!-- Kolom 2: Residential & Industrial -->
+                                    <div class="col-md-6">
+                                        <h6 class="text-uppercase fw-bold mb-3" style="color: #003366; font-size: 13px; letter-spacing: 0.5px;">
+                                            <i class="fas fa-building me-2" style="color: #FBB323;"></i> Residential & Industrial
+                                        </h6>
+                                        <ul class="list-unstyled mb-0">
+                                            <li><a href="service.html#ServiceTab-2" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">Internet & Security (Residential)</a></li>
+                                            <li><a href="service.html#ServiceTab-3" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">Factory & Cloud Solutions</a></li>
+                                            <li><a href="service.html#ServiceTab-3" class="dropdown-item dropdown-item-custom text-dark fw-bold small py-2 d-block text-decoration-none">Datacenter & Colocation</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider my-3"></div>
+                                <div class="text-center">
+                                    <a href="service.html" class="text-decoration-none fw-bold small" style="color: #003366;">Lihat Semua Layanan <i class="fa fa-arrow-right ms-1"></i></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a href="event.html" class="nav-link text-white fw-bold small px-3 px-lg-2">Event</a></li>
+                        <li class="nav-item"><a href="testimonial.html" class="nav-link text-white fw-bold small px-3 px-lg-2 active">Testimonial</a></li>
+                        <li class="nav-item"><a href="team.html" class="nav-link text-white fw-bold small px-3 px-lg-2">Team</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-white fw-bold small px-3 px-lg-2">PPID</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-white fw-bold small px-3 px-lg-2">Karir</a></li>
+                        <li class="nav-item"><a href="contact.html" class="nav-link text-white fw-bold small px-3 px-lg-2">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Right Action (Search, Language & Hamburger Button) -->
+                <div class="d-flex align-items-center">
+                    <a href="#" class="text-white me-3"><i class="fa fa-search"></i></a>
+                    <a href="#" class="text-white fw-bold small text-decoration-none me-3 d-none d-sm-block">Bahasa <i class="fa fa-chevron-down ms-1" style="font-size: 10px;"></i></a>
+                    
+                    <!-- Tombol Hamburger (JavaScript Trigger) -->
+                    <button id="openMenuBtn" class="btn btn-outline-light d-lg-none" style="padding: 2px 8px; border-color: rgba(255,255,255,0.3);">
+                        <i class="fa fa-bars fs-5"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- Top Navbar End -->
+
+
+        <!-- Header Start -->
+        <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Testimonial</h4>
+                <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                    <li class="breadcrumb-item active text-primary">Testimonial</li>
+                </ol>    
+            </div>
+        </div>
+        <!-- Header End -->
+
+
+        <!-- Testimonial Start -->
+        <div class="container-fluid testimonial py-5" style="background-color: #003366 !important;">
+            <div class="container py-5">
+                <div class="row g-5">
+                    <div class="col-lg-6 col-xl-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h4 class="text-primary" style="color: #FBB323 !important;">Testimonial</h4>
+                        <h1 class="display-4 text-white mb-4">Powerful Praise Here From Our Customers</h1>
+                        <p class="mb-4 text-white-50">Connecting people, businesses, and opportunities with reliable digital solutions designed to deliver faster, smarter, and more seamless experiences every day.
+                        </p>
+                        <a class="btn btn-light py-3 px-5" href="contact.html" style="background-color: #FBB323; border-color: #FBB323; color: #fff; font-weight: bold;">Contact Us</a>
+                    </div>
+                    <div class="col-lg-6 col-xl-7 wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="owl-carousel testimonial-carousel">
+                            <div class="testimonial-item">
+                                <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                                </div>
+                                <div class="testimonial-inner p-4">
+                                    <img src="img/testimonial-1.jpg" class="img-fluid" alt="">
+                                    <div class="ms-4">
+                                        <h4>Person Name</h4>
+                                        <p>Profession</p>
+                                        <div class="d-flex text-primary" style="color: #FBB323 !important;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star text-body"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="customer-text p-4">
+                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-item">
+                                <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                                </div>
+                                <div class="testimonial-inner p-4">
+                                    <img src="img/testimonial-2.jpg" class="img-fluid" alt="">
+                                    <div class="ms-4">
+                                        <h4>Person Name</h4>
+                                        <p>Profession</p>
+                                        <div class="d-flex text-primary" style="color: #FBB323 !important;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star text-body"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="customer-text p-4">
+                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-item">
+                                <div class="testimonial-quote"><i class="fa fa-quote-right fa-2x"></i>
+                                </div>
+                                <div class="testimonial-inner p-4">
+                                    <img src="img/testimonial-3.jpg" class="img-fluid" alt="">
+                                    <div class="ms-4">
+                                        <h4>Person Name</h4>
+                                        <p>Profession</p>
+                                        <div class="d-flex text-primary" style="color: #FBB323 !important;">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star text-body"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="customer-text p-4">
+                                    <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam soluta neque ab repudiandae reprehenderit ipsum eos cumque esse repellendus impedit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- Testimonial End -->
+
+        <!-- Footer Start (Background #003366) -->
+        <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s" style="background-color: #003366 !important;">
+            <div class="container py-5">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control w-100 py-3 ps-4 pe-5" type="text" placeholder="Email address to Subscribe">
+                            <button type="button" class="btn btn-primary position-absolute top-0 end-0 py-2 px-4 mt-2 me-2" style="background-color: #FBB323; border-color: #FBB323;">Subscribe</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                            <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-facebook-f text-dark"></i></a>
+                            <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-twitter text-dark"></i></a>
+                            <a class="btn btn-light btn-md-square me-3" href=""><i class="fab fa-instagram text-dark"></i></a>
+                            <a class="btn btn-light btn-md-square me-0" href=""><i class="fab fa-linkedin-in text-dark"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><img src="img/logo mvnet.png" alt="Logo" style="height: 35px; width: auto; filter: brightness(0) invert(1);"></h3>
+                                <p class="mb-3 text-white-50">Tumbuhkan Bisnis dan Konten Anda melalui Layanan, Platform dan Konektivitas Digital.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="index.html" class="text-white-50"> Home</a>
+                            <a href="about.html" class="text-white-50"> About us</a>
+                            <a href="service.html" class="text-white-50"> Service</a>
+                            <a href="testimonial.html" class="text-white-50"> Testimonial</a>
+                            <a href="contact.html" class="text-white-50"> Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Our Services</h4>
+                            <a href="service.html" class="text-white-50"> Internet Services</a>
+                            <a href="service.html" class="text-white-50"> Connectivity & Metro</a>
+                            <a href="service.html" class="text-white-50"> Datacenter & Colocation</a>
+                            <a href="service.html" class="text-white-50"> Managed Services</a>
+                            <a href="service.html" class="text-white-50"> Cloud & Hosting</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#" class="text-white-50"><i class="fa fa-map-marker-alt me-2" style="color: #FBB323;"></i> Indonesia</a>
+                            <a href="mailto:info@mvnet.co.id" class="text-white-50"><i class="fas fa-envelope me-2" style="color: #FBB323;"></i> info@mvnet.co.id</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright py-4" style="background-color: #002244; color: #fff;">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-md-0">
+                        <span class="text-white-50"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright me-2" style="color: #FBB323;"></i>MVnet</a>, All right reserved.</span>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end text-white-50">
+                        <span>PT Mitra Visioner Pratama</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary btn-lg-square back-to-top" style="background-color: #FBB323; border-color: #FBB323;"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+
+</html>
