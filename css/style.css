@@ -253,6 +253,8 @@
 
     .navbar .navbar-nav .nav-link {
         padding: 0;
+        
+        
     }
 
     .navbar .navbar-nav .nav-item {
@@ -261,20 +263,26 @@
         flex-direction: column;
         justify-content: start;
         align-items: start;
+        
+        
     }
+
 
     .navbar .navbar-nav .nav-btn {
         display: flex;
         justify-content: start;
+        
     }
 
     .navbar .navbar-nav {
+        
         width: 100%;
         display: flex;
         margin-top: 20px;
         padding-bottom: 20px;
         margin-left: 50px;
         background: var(--bs-light);
+        
     }
 
     .navbar .navbar-nav .nav-btn {
@@ -307,92 +315,6 @@
     color: var(--bs-white);
 }
 
-/* @media (min-width: 992px) {
-    .nav-bar .navbar::before {
-        position: absolute;
-        content: "";
-        width: 50px;
-        height: 100%;
-        top: 0;
-        left: -49px;
-        background: var(--bs-white);
-    }
-
-    .navbar .nav-btn {
-        display: flex;
-        align-items: center;
-        justify-content: end;
-    }
-
-    .navbar .navbar-nav {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: var(--bs-light);
-        border-radius: 10px;
-    }
-
-    .navbar .navbar-nav .nav-btn {
-        width: 100%;
-        display: flex;
-        margin-left: auto;
-    }
-
-    .navbar .nav-item .dropdown-menu {
-        display: block;
-        visibility: hidden;
-        top: 100%;
-        transform: rotateX(-75deg);
-        transform-origin: 0% 0%;
-        border: 0;
-        transition: .5s;
-        opacity: 0;
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        transform: rotateX(0deg);
-        visibility: visible;
-        margin-top: 19px;
-        background: var(--bs-white);
-        transition: .5s;
-        opacity: 1;
-    }
-
-    .header-top .navbar-brand {
-        position: relative;
-        overflow: hidden;
-        padding: 40px 50px 40px 0;
-        z-index: 99;
-    }
-    
-    .navbar-brand::before {
-        content: "";
-        position: absolute;
-        overflow: hidden;
-        width: 300px;
-        height: 600px;
-        top: -200px;
-        right: 18px;
-        background: #003366;
-        transform: rotate(-18deg);
-        z-index: -1;
-    }
-    
-    .navbar-brand::after {
-        content: "";
-        position: absolute;
-        overflow: hidden;
-        width: 5px;
-        height: 600px;
-        top: -200px;
-        right: 18px;
-        background: #FBB323;
-        transform: rotate(-18deg);
-        z-index: -1;
-    }
-}
-** Navbar End ** */
 
 
 /*** Carousel Hero Header Start ***/
@@ -450,7 +372,7 @@
 }
 
 .hero-shape-1:before {
-    background-color:#003366;;
+    background-color:#003366;
     content: "";
     width: 50%;
     height: 80%;
@@ -460,7 +382,7 @@
 }
 
 .hero-shape-2 {
-    background-color:#003366;;
+    background-color:#003366;
     width: 150px;
     height: 50%;
     position: absolute;
@@ -1092,6 +1014,9 @@
 .navbar-nav .dropdown {
     position: relative;
 }
+.navbar-nav .nav-item .nav-link {
+    font-size: 18px !important; /* Ubah angka 18px sesuai selera Anda */
+}
 .navbar-nav .dropdown-menu {
     display: none;
     position: absolute;
@@ -1409,3 +1334,34 @@
     border-bottom: 1px solid rgba(255,255,255,0.1);
     width: 100%;
 }
+
+
+
+
+
+/* --- Custom Explore Button --- */
+.btn-explore {
+    background-color: #003366;
+  
+    color: #ffffff !important; /* Warna teks putih */
+    transition: all 0.3s ease; /* Transisi halus saat di-hover */
+}
+
+.btn-explore:hover {
+    background-color: #FBB323;
+    border-color: #003366;
+    color: #003366 !important; /* Teks berubah menjadi biru gelap saat hover */
+}
+
+
+/* menu gari untuk MILESTONE of MVnet  */
+.py-5.bg-light .border-primary,
+.py-5.bg-light .border-bottom.border-primary {
+    border-color: #003366 !important;
+}
+
+.border-primary {
+    border-color: #003366 !important;
+}
+
+/* end  */
